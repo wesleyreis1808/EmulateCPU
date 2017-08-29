@@ -5,12 +5,14 @@
  */
 package emulatecpu;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +32,9 @@ public class AcessMemory {
         RandomAccessFile arquivo;
         String texto = null;
         try {
-            arquivo = new RandomAccessFile("C:\\Users\\WesleyReis\\Documents\\NetBeansProjects\\EmulateCPU\\src\\emulatecpu\\memory.txt", "r");
+            URL url = AcessMemory.class.getResource("memory.txt");
+            arquivo = new RandomAccessFile(new File(url.toURI()), "r");
+            
             arquivo.seek((address * 34));
             texto = arquivo.readLine();
         } catch (Exception ex) {
@@ -42,7 +46,9 @@ public class AcessMemory {
     public static void setWord(int val) {
         RandomAccessFile arquivo;
         try {
-            arquivo = new RandomAccessFile("C:\\Users\\WesleyReis\\Documents\\NetBeansProjects\\EmulateCPU\\src\\emulatecpu\\memory.txt", "rw");
+            URL url = AcessMemory.class.getResource("memory.txt");
+            arquivo = new RandomAccessFile(new File(url.toURI()), "rw");
+            
             String numero = Integer.toBinaryString(val);
             int tam = 32 - numero.length();
 
@@ -65,7 +71,8 @@ public class AcessMemory {
         RandomAccessFile arquivo;
         String texto = null;
         try {
-            arquivo = new RandomAccessFile("C:\\Users\\WesleyReis\\Documents\\NetBeansProjects\\EmulateCPU\\src\\emulatecpu\\program.txt", "r");
+            URL url = AcessMemory.class.getResource("memory.txt");
+            arquivo = new RandomAccessFile(new File(url.toURI()), "r");
             
             arquivo.seek((CPU.registros[OpCodes.PC] * 34));
             CPU.registros[OpCodes.PC] += 1;            
