@@ -53,24 +53,30 @@ public class CPU {
             switch (data.funcao) {// Instruções do tipo R
                 case OpCodes.SOMA:
                     soma(data.reg_A, data.reg_B, data.reg_destino, data.deslocamento);
+                    System.out.printf("SOMA entre registrador %d e %d salvo no %d\n",data.reg_A, data.reg_B,data.reg_destino);
                     break;
                 case OpCodes.SUB:
                     subtracao(data.reg_A, data.reg_B, data.reg_destino, data.deslocamento);
+                    System.out.printf("SUB entre registrador %d e %d salvo no %d\n",data.reg_A, data.reg_B,data.reg_destino);
                     break;
                 case OpCodes.DIV:
                     divisao(data.reg_A, data.reg_B, data.reg_destino, data.deslocamento);
+                    System.out.printf("DIV entre registrador %d e %d salvo no %d\n",data.reg_A, data.reg_B,data.reg_destino);
                     break;
                 case OpCodes.MULT:
                     multiplicacao(data.reg_A, data.reg_B, data.reg_destino, data.deslocamento);
+                    System.out.printf("MULT entre registrador %d e %d salvo no %d\n",data.reg_A, data.reg_B,data.reg_destino);
                     break;
             }
         } else {// Instruções do tipo I
             switch (type) {
                 case OpCodes.SAVE:
                     save(data.reg_destino, data.reg_origem, data.endereco);
+                    System.out.printf("SAVE regitrador %d no endereço %d\n",data.reg_origem, data.endereco);
                     break;
                 case OpCodes.LOAD:
                     load(data.reg_destino, data.reg_origem, data.endereco);
+                    System.out.printf("LOAD para o regitrador %d do endereço %d\n",data.reg_destino, data.endereco);
                     break;
             }
         }

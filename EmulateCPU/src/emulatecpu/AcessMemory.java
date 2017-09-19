@@ -25,7 +25,6 @@ public class AcessMemory {
     static int stackPointer = 2;
 
     public static void main(String[] args) throws IOException {
-       
     }
 
     public static String getWord(int address) {
@@ -37,6 +36,8 @@ public class AcessMemory {
             
             arquivo.seek((address * 34));
             texto = arquivo.readLine();
+            
+            arquivo.close();
         } catch (Exception ex) {
             Logger.getLogger(AcessMemory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,7 +48,7 @@ public class AcessMemory {
         RandomAccessFile arquivo;
         try {
             URL url = AcessMemory.class.getResource("memory.txt");
-            arquivo = new RandomAccessFile(new File(url.toURI()), "rw");
+            arquivo = new RandomAccessFile("src\\emulatecpu\\memory.txt", "rw");
             
             String numero = Integer.toBinaryString(val);
             int tam = 32 - numero.length();
@@ -60,6 +61,8 @@ public class AcessMemory {
             stackPointer++;
             arquivo.seek((stackPointer * 34));
             arquivo.writeBytes(numero);
+            
+            arquivo.close();
 
         } catch (Exception ex) {
             Logger.getLogger(AcessMemory.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,6 +85,7 @@ public class AcessMemory {
             
             if(texto.equalsIgnoreCase(""))  CPU.run = false;
             
+            arquivo.close();
             return texto;
         } catch (Exception ex) {
             Logger.getLogger(AcessMemory.class.getName()).log(Level.SEVERE, null, ex);
