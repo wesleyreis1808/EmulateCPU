@@ -18,7 +18,7 @@ public class CPU {
         while(run){
             instruction = AcessMemory.getProgram();
             
-            if(instruction == null || !instruction.equals("")) break;
+            if(instruction == null) break;
             
             inst_type = getInstType(instruction);
             data = findData(instruction,data,inst_type);

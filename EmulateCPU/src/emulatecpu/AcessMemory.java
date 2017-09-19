@@ -71,7 +71,7 @@ public class AcessMemory {
         RandomAccessFile arquivo;
         String texto = null;
         try {
-            URL url = AcessMemory.class.getResource("memory.txt");
+            URL url = AcessMemory.class.getResource("program.txt");
             arquivo = new RandomAccessFile(new File(url.toURI()), "r");
             
             arquivo.seek((CPU.registros[OpCodes.PC] * 34));
