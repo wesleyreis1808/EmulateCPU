@@ -20,4 +20,5 @@ public class Data {
     
     int reg_origem;
     int endereco;
+    String enderecoS;
 }
