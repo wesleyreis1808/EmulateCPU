@@ -11,22 +11,27 @@ package emulatecpu;
  */
 public class Word {
     
-    private String validacao;   //1
+    private boolean validacao;   //1
     private String palavra1;    //
     private String palavra2;    //
     private String tag;         //
 
-    public Word(String instru) {
-        
+    public Word(int tag, int palavra1, int palavra2) {
+        this.palavra1 = Integer.toBinaryString(palavra1);
+        this.palavra2 = Integer.toBinaryString(palavra2);
+        this.tag = Integer.toBinaryString(tag);
+        this.validacao = true;
     }
 
-    public String getValidacao() {
+    public boolean isValidacao() {
         return validacao;
     }
 
-    public void setValidacao(String validacao) {
+    public void setValidacao(boolean validacao) {
         this.validacao = validacao;
     }
+
+
 
     public String getPalavra1() {
         return palavra1;
